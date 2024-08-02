@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -21,6 +22,7 @@ public class MessageController {
         sc = shared;
         messagesSeen = new HashSet<Message>();
     }
+
     public ArrayList<Message> getMessages() {
        String jsonInput = sc.getMessages();
         // convert json to array of Ids
@@ -50,7 +52,6 @@ public class MessageController {
     }
 
     public Message postMessage(Id myId, Id toId, Message msg) {
-
         return null;
     }
  
