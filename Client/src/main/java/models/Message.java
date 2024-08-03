@@ -20,8 +20,8 @@ public class Message implements Comparable<Message> {
     private String message = "";
     private String toid = "";
     private String fromid = "";
-    private String timestamp = "";
-    private String sequence = "";
+//    private String timestamp = "";
+//    private String sequence = "";
 
     public Message() {
     }
@@ -29,8 +29,8 @@ public class Message implements Comparable<Message> {
         this.message = message;
         this.fromid = fromId;
         this.toid = toId;
-        this.timestamp = timestamp;
-        this.sequence = sequence;
+//        this.timestamp = timestamp;
+//        this.sequence = sequence;
     }
     
     public Message (String message, String fromId, String toId) {
@@ -52,7 +52,7 @@ public class Message implements Comparable<Message> {
 
     @Override
     public int compareTo(Message o) {
-        return this.sequence.compareTo(((Message) o).getSequence());
+        return 0;
     }
 
     public String getMessage() {
@@ -79,11 +79,11 @@ public class Message implements Comparable<Message> {
         this.fromid = fromId;
     }
 
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public String getSequence() {
-        return sequence;
-    }
+//    public String getTimestamp() {
+//        return timestamp;
+//    }
+//
+//    public String getSequence() {
+//        return sequence;
+//    }
 }

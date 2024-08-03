@@ -62,6 +62,7 @@ public class MessageController {
 //                sc.sendRequest("/messages", "POST", om.writeValueAsString(msg));
 //                return om.readValue(sc.sendRequest("/ids/xt0fer/messages", "POST", om.writeValueAsString(msg)), Message.class);
                 sc.sendRequest("/ids/xt0fer/messages","POST", om.writeValueAsString(msg));
+                System.out.println(om.writeValueAsString(msg));
                 return msg;
             } catch (JsonProcessingException exception) {
                 System.out.println("Message is invalid");

@@ -47,7 +47,6 @@ public class TransactionController {
         //set the name to a new name
 //        idWeNeed.setName(newName);
         idCtrl.putId(idWeNeed,newName);
-
         //sout the name change
         System.out.println("Changed the name to: " + newName + " -> for Github handle: " + git);
         //return the id name
@@ -62,7 +61,6 @@ public class TransactionController {
          Id tid = new Id(idToRegister, name, githubName);
          idCtrl.postId(tid);
          return ("Id registered.");
-//        return null;
     }
 
     public List<Message> getMessages() {
@@ -70,11 +68,7 @@ public class TransactionController {
     }
 
     public String postMessage(String message, String idFrom, String idTo){
-//        Message msg = new Message(message,idFrom,idTo,"","");
-//        msg.setFromid(idFrom);
-//        msg.setToid(idTo);
-//        messageObj = new Message(message,idFrom,idTo,"","");
-        Message testM = new Message(message,idFrom,idTo,"","");
+        Message testM = new Message(message,idFrom,idTo,"x","z");
         msgCtrl.postMessage(idFrom, idTo, testM);
         return "Message has been posted.";
     }
