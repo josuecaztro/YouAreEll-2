@@ -40,5 +40,12 @@ public class YouAreEll {
         return sb.toString();
     }
 
+    public String postId(String userId, String githubName, String name) {
+        String createdId = tt.postId(userId, name, githubName);
+        return createdId;
+    }
+
+
+
 
 }

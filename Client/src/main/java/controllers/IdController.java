@@ -1,17 +1,22 @@
 package controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import models.Id;
 
 public class IdController {
     ServerController sc;
+    private static ObjectMapper objectMapper = new ObjectMapper(); //I added this - JC
+
     private HashMap<String, Id> allIds;
 
     Id myId;
@@ -39,13 +44,34 @@ public class IdController {
         }
         return null;
     }
+//
+//    public Id postId(Id id) {
+//
+////         create json from id
+//        ObjectMapper mapper = new ObjectMapper();
+//        String jsonId = null;
+//        try {
+//            jsonId = mapper.writeValueAsString(id);
+//        } catch (JsonProcessingException e) {
+//            //this is for catching any errors
+//            System.out.println("Error processing JSON from response: " + e.getMessage());
+////            e.printStackTrace();
+//        }
+//
+//        // call server, get json result Or error
+//        sc.sendRequest("/ids", "POST", jsonId);
+//
+//        // result json to Id obj
+//        return null;
+//    }
 
     public Id postId(Id id) {
-        // create json from id
-        // call server, get json result Or error
-        // result json to Id obj
-
-        return null;
+        try {
+            return objectMapper.readValue(sc.sendRequest("/ids", "POST", objectMapper.writeValueAsString(id)), Id.class);
+        } catch (JsonProcessingException exception) {
+            System.out.println("Id is invalid");
+            return null;
+        }
     }
 
     public Id putId(Id id) {

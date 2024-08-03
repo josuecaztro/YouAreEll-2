@@ -25,9 +25,9 @@ public class URLShell {
     }
 
     public void run() throws IOException {
-        YouAreEll urll = new YouAreEll(new TransactionController(new MessageController(ServerController.shared()), 
-        new IdController(ServerController.shared())));
-        
+        YouAreEll urll = new YouAreEll(new TransactionController(new MessageController(ServerController.shared()),
+                new IdController(ServerController.shared())));
+
         String commandLine;
         BufferedReader console = new BufferedReader
                 (new InputStreamReader(System.in));
@@ -85,14 +85,21 @@ public class URLShell {
                     continue;
                 }
                 // you need to add a bunch more.
-                //post an id
-                if (list.get(0).contains("postid")){
-                    //logic for posting
 
+                //post an id
+                if (list.get(0).contains("postid")) {
+                    //logic for posting
+//                    System.out.println("List size: " + list.size());
+                    boolean hasArgs = list.size() == 4;
+                    if (hasArgs){
+//                        System.out.println("In the if statement");
+                        String uid = list.get(1);
+                        String name = list.get(2);
+                        String github = list.get(3);
+                        urll.postId(uid,name,github);
+                    }
                     continue;
                 }
-
-
 
 
                 //!! command returns the last command in history
@@ -103,7 +110,8 @@ public class URLShell {
                 // there is BUG in this code, can you find it?
                 else if (list.get(list.size() - 1).charAt(0) == '!') {
                     int b = Character.getNumericValue(list.get(list.size() - 1).charAt(1));
-                    if (b <= history.size())//check if integer entered isn't bigger than history size
+                    if (b < history.size())//check if integer entered isn't bigger than history size
+                        //the bug is switching the <= to < on the line above -JC
                         pb.command(history.get(b));
                 } else {
                     pb.command(list);
@@ -128,19 +136,20 @@ public class URLShell {
                 // System.out.println("Input Error, Please try again!");
             }
 
-            //catch ioexception, output appropriate message, resume waiting for input
-            // catch (IOException e) {
-            //     System.out.println("Input Error, Please try again!");
-            // }
-            // So what, do you suppose, is the meaning of this comment?
-            /** The steps are:
-             * 1. parse the input to obtain the command and any parameters
-             * 2. create a ProcessBuilder object
-             * 3. start the process
-             * 4. obtain the output stream
-             * 5. output the contents returned by the command
-             */
-            //
+                //catch ioexception, output appropriate message, resume waiting for input
+                // catch (IOException e) {
+                //     System.out.println("Input Error, Please try again!");
+
+                // So what, do you suppose, is the meaning of this comment?
+                /** The steps are:
+                 * 1. parse the input to obtain the command and any parameters
+                 * 2. create a ProcessBuilder object
+                 * 3. start the process
+                 * 4. obtain the output stream
+                 * 5. output the contents returned by the command
+                 */
+                //
+
 
         }
 

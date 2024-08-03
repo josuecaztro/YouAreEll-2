@@ -1,5 +1,9 @@
 package controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import models.Id;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -14,7 +18,6 @@ import java.util.Scanner;
 
 public class ServerController {
     private String rootURL = "http://zipcode.rocks:8085";
-
     private static ServerController svr = new ServerController();
 
     private ServerController() {
@@ -27,7 +30,7 @@ public class ServerController {
     /**
      * Sends a GET or POST request to the specified URL.
      *
-     * @param url      The URL to send the request to
+     * @paramm url      The URL to send the request to
      * @param method   Either "GET" or "POST"
      * @param body     The body of the request, if any
      * @return         A string containing the response from the server
@@ -80,6 +83,8 @@ public class ServerController {
     public String getIds() {
         return sendRequest("/ids", "GET", "");
     }
+
+//    public Id postId(Id id) { }
 
     public static void main(String[] args) {
         ServerController me = ServerController.shared();
