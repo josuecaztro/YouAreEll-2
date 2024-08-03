@@ -45,6 +45,11 @@ public class YouAreEll {
         return createdId;
     }
 
+    public String getId(String git){
+        String gettingId = tt.getId(git);
+        return gettingId;
+    }
+
 
 
 

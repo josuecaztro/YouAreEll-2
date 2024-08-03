@@ -3,6 +3,7 @@ package controllers;
 import models.Id;
 import models.Message;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionController {
@@ -19,9 +20,17 @@ public class TransactionController {
         return idCtrl.getIds();
     }
 
-    public String getId(String id) {
-        return null;
+    public String getId(String idToGet) {
+        ArrayList<Id> allIdsList = idCtrl.getIds();
+        for (Id mid : allIdsList){
+            if (mid.getGithub().equals(idToGet)){
+                System.out.println("I found it! Name: " + mid.getName() + " and GitHub: " + mid.getGithub() );
+                return mid.getName();
+            }
+        }
+        return "No id found by that github user. Sorry!";
     }
+
     public String putId(String id) {
         return null;
     }
