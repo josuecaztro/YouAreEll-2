@@ -68,7 +68,7 @@ public class TransactionController {
     }
 
     public String postMessage(String message, String idFrom, String idTo){
-        Message testM = new Message(message,idFrom,idTo,"x","z");
+        Message testM = new Message(message,idFrom,idTo);
         msgCtrl.postMessage(idFrom, idTo, testM);
         return "Message has been posted.";
     }
