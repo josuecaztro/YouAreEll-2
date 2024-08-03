@@ -50,6 +50,11 @@ public class YouAreEll {
         return gettingId;
     }
 
+    public String putId(String name, String newName){
+        String puttingId = tt.putId(name,newName);
+        return puttingId;
+    }
+
 
 
 

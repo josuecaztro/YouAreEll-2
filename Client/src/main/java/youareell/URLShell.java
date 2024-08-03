@@ -112,6 +112,15 @@ public class URLShell {
                     continue;
                 }
                 if (list.get(0).contains("putid")){
+                    boolean hasArgs = list.size() == 3;
+                    if (hasArgs){
+                        String strGit = list.get(1);
+                        String strNewName = list.get(2);
+                        urll.putId(strGit,strNewName);
+                    }
+                    if (list.size() == 1 || list.size() == 2){
+                        System.out.println("No parameters for put given.");
+                    }
                     //logic to change name on id
                 }
 

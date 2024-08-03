@@ -75,8 +75,17 @@ public class IdController {
     }
 
 
-    public Id putId(Id id) {
-        return null;
+    public Id putId(Id id, String update) {
+        try {
+            id.setName(update);
+            System.out.println("You are in the put method on ID controller.");
+            sc.sendRequest("/ids","PUT",objectMapper.writeValueAsString(id));
+            return id;
+//            return objectMapper.readValue(sc.sendRequest("/ids", "PUT", objectMapper.writeValueAsString(id)), Id.class);
+        } catch (JsonProcessingException exception) {
+            System.out.println("Id is invalid");
+            return null;
+        }
     }
  
 }

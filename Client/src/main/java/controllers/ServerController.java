@@ -53,6 +53,15 @@ public class ServerController {
                 wr.close();
             }
 
+            if (method.equals("PUT")) {
+                // Send PUT request using the body parameter
+                con.setDoOutput(true);
+                DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+                wr.writeBytes(body);
+                wr.flush();
+                wr.close();
+            }
+
             int responseCode = con.getResponseCode();
 
             BufferedReader in;
