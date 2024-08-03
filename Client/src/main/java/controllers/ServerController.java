@@ -68,6 +68,7 @@ public class ServerController {
             if (responseCode == 200) {
                 in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             } else {
+                System.out.println("FAIL");
                 in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             }
 

@@ -123,6 +123,19 @@ public class URLShell {
                     }
                     //logic to change name on id
                 }
+                if (list.get(0).contains("postmessage")){
+                    boolean hasArgs = list.size() == 4;
+                    if (hasArgs){
+                        String body = list.get(1);
+                        String from = list.get(2);
+                        String to = list.get(3);
+                        urll.postMessage(body,from,to);
+                        System.out.println("Message has been posted!");
+                    }
+                    if (list.size() >= 1 && list.size() <= 3){
+                        System.out.println("Insufficent parameters for postMessage.");
+                    }
+                }
 
 
                 //!! command returns the last command in history

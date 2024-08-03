@@ -51,8 +51,22 @@ public class MessageController {
         return null;
     }
 
-    public Message postMessage(Id myId, Id toId, Message msg) {
-        return null;
+    public Message postMessage(String myId, String toId, Message msg) {
+        ObjectMapper om = new ObjectMapper();
+            try {
+                msg.setFromid(myId);
+                msg.setToid(toId);
+//                msg.setMessage(msg);
+//                msg.setFromid(myId);
+//                msg.setToid(toId);//not sure if these are right...
+//                sc.sendRequest("/messages", "POST", om.writeValueAsString(msg));
+//                return om.readValue(sc.sendRequest("/ids/xt0fer/messages", "POST", om.writeValueAsString(msg)), Message.class);
+                sc.sendRequest("/ids/xt0fer/messages","POST", om.writeValueAsString(msg));
+                return msg;
+            } catch (JsonProcessingException exception) {
+                System.out.println("Message is invalid");
+                return null;
+            }
     }
  
 }

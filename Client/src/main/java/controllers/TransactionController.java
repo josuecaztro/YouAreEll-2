@@ -41,6 +41,7 @@ public class TransactionController {
             if (mid.getGithub().equals(git)){
                 System.out.println("I found it!");
                 idWeNeed = mid;
+                break;
             }
         }
         //set the name to a new name
@@ -66,5 +67,15 @@ public class TransactionController {
 
     public List<Message> getMessages() {
         return msgCtrl.getMessages();
+    }
+
+    public String postMessage(String message, String idFrom, String idTo){
+//        Message msg = new Message(message,idFrom,idTo,"","");
+//        msg.setFromid(idFrom);
+//        msg.setToid(idTo);
+//        messageObj = new Message(message,idFrom,idTo,"","");
+        Message testM = new Message(message,idFrom,idTo,"","");
+        msgCtrl.postMessage(idFrom, idTo, testM);
+        return "Message has been posted.";
     }
 }
