@@ -40,6 +40,15 @@ public class YouAreEll {
         }
         return sb.toString();
     }
+//
+//    public String get_messagesfromId(Id id) {
+//        List<models.Message> latestMessages = tt.getMessagesFromId("hi");
+//        StringBuilder sb = new StringBuilder();
+//        for (models.Message msg : latestMessages) {
+//            sb.append(msg.toString()+"\n");
+//        }
+//        return sb.toString();
+//    }
 
     public String postId(String userId, String githubName, String name) {
         String createdId = tt.postId(userId, name, githubName);

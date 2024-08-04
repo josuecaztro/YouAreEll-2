@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -42,6 +43,31 @@ public class MessageController {
         return null;
     }
     public ArrayList<Message> getMessagesForId(Id Id) {
+        String jsonInput = sc.getMessages();
+        // convert json to array of Ids
+        ObjectMapper mapper = new ObjectMapper();
+        List<Message> msgs;
+        try {
+            msgs = mapper.readValue(jsonInput, mapper.getTypeFactory().constructCollectionType(List.class, Message.class));
+
+            ArrayList<Message> msgList = new ArrayList<>(msgs);
+            // return array of Ids
+            ArrayList<Message> solutionList = new ArrayList<>();
+            String idName = Id.getName();
+            for (Message x : msgList){
+                if (x.getToid().equals(idName)){
+                    solutionList.add(x);
+                }
+            }
+            System.out.println("Solution list size : " + solutionList.size());
+            return solutionList;
+
+
+        } catch (JsonMappingException e) {
+            System.out.println("Error processing JSON from response: " + e.getMessage());
+        } catch (JsonProcessingException e) {
+            System.out.println("Error processing JSON from response: " + e.getMessage());
+        }
         return null;
     }
     public Message getMessageForSequence(String seq) {

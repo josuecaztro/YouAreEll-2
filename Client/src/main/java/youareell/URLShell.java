@@ -11,6 +11,7 @@ import controllers.IdController;
 import controllers.MessageController;
 import controllers.ServerController;
 import controllers.TransactionController;
+import models.Id;
 
 // URLShell is a Console view for youareell.YouAreEll.
 public class URLShell {
@@ -136,6 +137,21 @@ public class URLShell {
                         System.out.println("Insufficent parameters for postMessage.");
                     }
                 }
+//                if (list.get(0).contains("messageinbox")) {
+//                    boolean hasArgs = list.size() == 2;
+//                    if (hasArgs){
+//                        String idGetInbox = list.get(1);
+//
+//                        //
+//                        String results = urll.get_messagesfromId();
+//                        URLShell.prettyPrint(results);
+//                        continue;
+//                    }
+//                    if (list.size() == 1){
+//                        System.out.println("Missing a parameter.");
+//                    }
+//
+//                }
 
 
                 //!! command returns the last command in history
@@ -153,7 +169,7 @@ public class URLShell {
                     pb.command(list);
                 }
 
-                // // wait, wait, what curiousness is this?
+//                 // wait, wait, what curiousness is this?
 //                 Process process = pb.start();
 //
 //                 //obtain the input stream
